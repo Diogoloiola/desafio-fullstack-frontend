@@ -1,5 +1,10 @@
-export default function Header(){
+import { Container } from "./style"
+export default function Header() {
     return (
-        <div>ola</div>
+        <Container>
+            <nav>
+                <h1>List Users</h1>
+            </nav>
+        </Container>
     )
 }
