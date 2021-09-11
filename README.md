@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+## Desafio front-end
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Descrição
 
-## Available Scripts
+A empresa Pharma Inc, está trabalhando em um projeto em colaboração com sua base de clientes para facilitar a gestão e visualização da informação dos seus pacientes de maneira simples e objetiva em um Dashboard onde podem listar, filtrar e expandir os dados disponíveis.
+O seu objetivo nesse projeto, é trabalhar no desenvolvimento do Front end que consumirá a API da empresa Pharma Inc seguindo os requisitos propostos neste desafio.
 
-In the project directory, you can run:
+## Requisitos
 
-### `yarn start`
+Devemos exibir os seguintes campos do paciente:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Imagem
+- Nome completo
+- Email
+- Gênero
+- Data de nascimento
+- Telefone
+- Nacionalidade
+- Endereço
+- ID (Número de identificação)
+- URL para compartilhamento
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Tecnologias utilizadas
+    - React JS
+    - Styled componens
+    - Axios
+    - Bootstrap
 
-### `yarn test`
+## Instalando / Iniciando
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Para executar o projeto sua máquina deve conter os requisitos abaixo.
 
-### `yarn build`
+### Pré-requisitos
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    node v16.8.0
+    npm 7.21.0
+    Docker version 20.10.8
+    docker-compose version 1.17.1
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Link para download das ferramentas
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<a href="https://nodejs.org/en/">Download node js</a> <br>
+<a href="https://docs.docker.com/get-docker/">Download docker</a>
 
-### `yarn eject`
+### Rodando o projeto com docker
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Para executar o projeto digite o seguinte comando.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    docker-compose up
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+No seu terminal as seguintes informações.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<img src="images/terminal.png" />
 
-## Learn More
+Escolha a seguinte opção para ver a aplicação em execução
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    On Your Network: http://172.21.0.2:3000
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## Rodando o projeto sem o docker
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    npm install
+    npm start
 
-### Analyzing the Bundle Size
+Tente acessar o link abaixo.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    http://localhost:3000
 
-### Making a Progressive Web App
+## Imagem do projeto
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<img src="images/aplicação.png" />
 
-### Advanced Configuration
+## Créditos
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Esse é um desafio da <a href="https://lab.coodesh.com/public-challenges/front-end-challenge-2021">coodesh</a>, todos os direitos reservados a empresa.
