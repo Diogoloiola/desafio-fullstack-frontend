@@ -77,3 +77,8 @@ export const Image = styled.img`
     border-radius: 50%;
     margin: auto;
 `
+export const ContainerLink = styled.div`
+    a{
+        text-decoration: none;
+    }
+`
