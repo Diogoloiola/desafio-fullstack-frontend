@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.section`
     margin-top: 30px;
-    table {
+    /* table {
         font-family: arial, sans-serif;
         border-collapse: collapse;
         width: 100%;
@@ -17,7 +17,7 @@ export const Container = styled.section`
 
     tr:nth-child(even) {
         background-color: #dddddd;
-    }
+    } */
 
 `
 export const Button = styled.button`

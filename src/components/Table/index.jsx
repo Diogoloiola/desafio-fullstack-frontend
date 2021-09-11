@@ -1,13 +1,14 @@
 import { Container, Button } from './style';
 import Modal from './../Modal';
 import { useState } from 'react';
+import { Table as TableBootstrap } from 'react-bootstrap';
 
 export default function Table({ data }) {
     const [dataModal, setDataModal] = useState({ active: false, item: null });
 
     return (
         <Container>
-            <table>
+            <TableBootstrap striped bordered hover responsive>
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -30,9 +31,8 @@ export default function Table({ data }) {
                         })
                     }
                 </tbody>
-            </table>
-            {dataModal.active && <Modal data={dataModal.item} setDataModal={setDataModal}/>}
-            {/* <Modal data={dataModal.item} setDataModal={setDataModal}/> */}
+            </TableBootstrap>
+            {dataModal.active && <Modal data={dataModal} setDataModal={setDataModal}/>}
         </Container>
     )
 }
