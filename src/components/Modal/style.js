@@ -73,8 +73,7 @@ export const W100 = styled.div`
     width: 100%;
 `
 export const Image = styled.img`
+    display: block;
     border-radius: 50%;
-    position: absolute;
-    top: -160px;
-    left: 240px;
+    margin: auto;
 `
