@@ -1,5 +1,6 @@
 import { Modal as ModalBootstrap } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { formatDate } from './../../utils/utils.js';
 
 import { Button, ContainerFlex, Input, W45, W100, Image, ContainerLink } from './style'
 
@@ -7,15 +8,15 @@ import { Button, ContainerFlex, Input, W45, W100, Image, ContainerLink } from '.
 function getFooterModal(type, uuid, setDataModal) {
     if (type === 1) {
         return (<ContainerLink>
-            <Link className="link" to={`/`}>Voltar</Link>
+            <Link className="link" to={`/`}>Back</Link>
         </ContainerLink>)
 
     } else {
         return (<>
             <ContainerLink>
-                <Link className="link" to={`/${uuid}`}>Compartilhar</Link>
+                <Link className="link" to={`/${uuid}`}>Share</Link>
             </ContainerLink>
-            <Button onClick={() => setDataModal({ active: false, item: null })}>Fechar</Button>
+            <Button onClick={() => setDataModal({ active: false, item: null })}>Close</Button>
         </>)
     }
 }
@@ -30,17 +31,17 @@ export default function Modal({ data, setDataModal }) {
                 </ContainerFlex>
                 <ContainerFlex>
                     <W45>
-                        <label htmlFor="">Nome completo</label>
+                        <label htmlFor="">Full name</label>
                         <Input disabled type="text" value={`${user.name.title} ${user.name.first} ${user.name.last}`} />
                     </W45>
                     <W45>
-                        <label htmlFor="">Gênero</label>
+                        <label htmlFor="">Genre</label>
                         <Input disabled type="text" value={user.gender} />
                     </W45>
                 </ContainerFlex>
                 <ContainerFlex>
                     <W100>
-                        <label htmlFor="">Endereço</label>
+                        <label htmlFor="">Address</label>
                         <Input disabled type="text" value={user.location.street.name} />
                     </W100>
                 </ContainerFlex>
@@ -52,15 +53,15 @@ export default function Modal({ data, setDataModal }) {
                 </ContainerFlex>
                 <ContainerFlex>
                     <W100>
-                        <label htmlFor="">Data de nascimento</label>
-                        <Input disabled type="text" value={user.dob.date} />
+                        <label htmlFor="">Date of birth</label>
+                        <Input disabled type="text" value={formatDate(user.dob.date)} />
                     </W100>
                     <W100>
-                        <label htmlFor="">Telefone</label>
+                        <label htmlFor="">Phone</label>
                         <Input disabled type="text" value={user.phone} />
                     </W100>
                     <W100>
-                        <label htmlFor="">Nacionalidade</label>
+                        <label htmlFor="">Nationality</label>
                         <Input disabled type="text" value={user.nat} />
                     </W100>
                 </ContainerFlex>
