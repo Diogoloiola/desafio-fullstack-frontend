@@ -12,7 +12,7 @@ function getUser(users, uuid) {
 export default function UserDetails({ data }) {
     const { uuid } = useParams();
     const user = getUser(data, uuid);
-    const [dataModal, setDataModal] = useState({ active: true, item: user });
+    const [dataModal, setDataModal] = useState({ active: true, item: user, type: 1 });
     return (
         <>
             {user && <Modal data={dataModal} setDataModal={setDataModal} />}
