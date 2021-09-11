@@ -1,4 +1,4 @@
-import { Container, Main } from './style'
+import { Container} from './style'
 import Header from './../Header';
 import DetailsUser from './../DetailsUser';
 import Message from './../Message';
@@ -7,6 +7,10 @@ import Table from './../Table';
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import { Container as Main } from 'react-bootstrap';
 
 export default function Layout() {
 
