@@ -1,15 +1,32 @@
 import { Modal as ModalBootstrap } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
+import { Button, ContainerFlex, Input, W45, W100, Image, ContainerLink } from './style'
 
 
-import { Button, ContainerFlex, Input, W45, W100, Image } from './style'
+function getFooterModal(type, uuid, setDataModal) {
+    if (type === 1) {
+        return (<ContainerLink>
+            <Link className="link" to={`/`}>Voltar</Link>
+        </ContainerLink>)
+
+    } else {
+        return (<>
+            <ContainerLink>
+                <Link className="link" to={`/${uuid}`}>Compartilhar</Link>
+            </ContainerLink>
+            <Button onClick={() => setDataModal({ active: false, item: null })}>Fechar</Button>
+        </>)
+    }
+}
+
 export default function Modal({ data, setDataModal }) {
     const user = data.item;
-    console.log(user);
     return (
         <ModalBootstrap show={data.active} size="lg">
             <ModalBootstrap.Body>
                 <ContainerFlex>
-                   <Image src={user.picture.medium} alt="" srcset="" />
+                    <Image src={user.picture.medium} alt="" srcset="" />
                 </ContainerFlex>
                 <ContainerFlex>
                     <W45>
@@ -49,7 +66,7 @@ export default function Modal({ data, setDataModal }) {
                 </ContainerFlex>
             </ModalBootstrap.Body>
             <ModalBootstrap.Footer>
-                <Button onClick={() => setDataModal({ active: false, item: null })}>Fechar</Button>
+                {getFooterModal(data.type, user.login.uuid, setDataModal)}
             </ModalBootstrap.Footer>
         </ModalBootstrap>
     )
