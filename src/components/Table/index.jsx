@@ -14,7 +14,7 @@ export default function Table({ data }) {
 
     return (
         <Container>
-            <TableBootstrap striped bordered hover responsive>
+            <TableBootstrap bordered hover responsive>
                 <thead>
                     <tr>
                         <th>Name</th>
