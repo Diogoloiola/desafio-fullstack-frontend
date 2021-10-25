@@ -48,14 +48,41 @@ export default class RandomUserApi {
         }
     }
 
+    /**
+     * Função que atualiza os dados do usuário
+     * @param {*} data 
+     * @param {*} id 
+     * @returns 
+     */
     async updateUser(data, id) {
         try {
             const finalUrl = `${this.url}/users/${id}`
             const result = await this.axios.patch(finalUrl, data)
             return {
-                status: true, 
+                status: true,
                 body: result.data
             }
+        } catch (error) {
+            return {
+                status: false,
+                body: error
+            }
+        }
+    }
+    /**
+     * Função que exclui o usuário da base de dados
+     * @param {*} id 
+     * @returns 
+     */
+    async deleteUser(id) {
+        try {
+            const finalUrl = `${this.url}/users/${id}`
+            const result = await this.axios.delete(finalUrl)
+            return {
+                status: result.status,
+                body: result.data.message
+            }
+
         } catch (error) {
             return {
                 status: false,
