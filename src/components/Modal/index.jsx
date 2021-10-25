@@ -1,25 +1,7 @@
 import { useState } from 'react';
 import { Modal as ModalBootstrap, Container, Row, Col, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 
-import { Button, Image, ContainerLink } from './style'
-
-
-function getFooterModal(type, uuid, setDataModal) {
-    if (type === 1) {
-        return (<ContainerLink>
-            <Link className="link" to={`/`}>Back</Link>
-        </ContainerLink>)
-
-    } else {
-        return (<>
-            <ContainerLink>
-                <Link className="link" to={`/${uuid}`}>Share</Link>
-            </ContainerLink>
-            <Button onClick={() => setDataModal({ active: false, item: null })}>Close</Button>
-        </>)
-    }
-}
+import { Button, Image } from './style'
 
 export default function Modal({ data, setDataModal }) {
     const user = data.item;
@@ -138,7 +120,7 @@ export default function Modal({ data, setDataModal }) {
                 </Container>
             </ModalBootstrap.Body>
             <ModalBootstrap.Footer>
-                {getFooterModal(data.type, user.login.uuid, setDataModal)}
+                <Button onClick={() => setDataModal({ active: false, item: null })}>Close</Button>
             </ModalBootstrap.Footer>
         </ModalBootstrap>
     )
