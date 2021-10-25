@@ -1,3 +1,1 @@
-export function formatDate(date) {
-    return date.slice(0, 10);
-}
+export const URL_API = 'http://localhost:3000'
