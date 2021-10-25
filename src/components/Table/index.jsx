@@ -63,7 +63,12 @@ export default function Table({ data, randomUser, setUsers }) {
                     }
                 </tbody>
             </TableBootstrap>
-            {dataModal.active && <Modal data={dataModal} setDataModal={setDataModal} randomUser={randomUser} />}
+            {dataModal.active && <Modal 
+                data={dataModal} 
+                setDataModal={setDataModal} 
+                randomUser={randomUser}
+                setUsers={setUsers}
+             />}
         </Container>
     )
 }

@@ -4,7 +4,7 @@ import { Button, Image } from './style'
 import ValidateForm from './../../utils/formValidate.js'
 
 
-export default function Modal({ data, setDataModal, randomUser }) {
+export default function Modal({ data, setDataModal, randomUser, setUsers }) {
     const user = data.item;
 
     const [name, setName] = useState(`${user.name.first} ${user.name.last}`)
@@ -31,6 +31,8 @@ export default function Modal({ data, setDataModal, randomUser }) {
         if (result === true) {
             const result = await randomUser.updateUser(payload, id)
             if (result) {
+                const data = await randomUser.getAll()
+                setUsers(data['body'])
                 alert('User data updated successfully')
             }else{
                 alert('Something went wrong, please try again later')
