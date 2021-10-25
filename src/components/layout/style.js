@@ -8,8 +8,7 @@ export const Container = styled.div`
 export const Pagination = styled.div`
   display: flex;
   width: 100px;
-  margin-left: auto;
-  justify-content: center;
+  margin-right: 40px;
   button {
     display: block;
     padding: 10px 15px;

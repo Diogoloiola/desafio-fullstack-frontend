@@ -35,6 +35,16 @@ export default function Layout() {
     getData();
   }, []);
 
+ 
+  const pagination = async (page) => {
+    setIsVisible(true)
+    const result = await randomUser.pagination(page - 1)
+    setUsers(result['body'])
+    setIsVisible(false)
+  }
+
+
+
   return (
     <Router>
       <Route path="/" exact render={() => (
@@ -47,8 +57,16 @@ export default function Layout() {
               <Form />
               <Table data={users} randomUser={randomUser} setUsers={setUsers} />
               <Pagination>
-                <button>Previous</button>
-                <button>Next</button>
+                <button onClick={() => pagination(1)}>1</button>
+                <button onClick={() => pagination(2)}>2</button>
+                <button onClick={() => pagination(3)}>3</button>
+                <button onClick={() => pagination(4)}>4</button>
+                <button onClick={() => pagination(5)}>5</button>
+                <button onClick={() => pagination(6)}>6</button>
+                <button onClick={() => pagination(7)}>7</button>
+                <button onClick={() => pagination(8)}>8</button>
+                <button onClick={() => pagination(9)}>9</button>
+                <button onClick={() => pagination(10)}>10</button>
               </Pagination>
             </Main>
           </Container>
