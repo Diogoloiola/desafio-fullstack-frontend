@@ -13,6 +13,7 @@ export default class RandomUserApi {
 
     async getAll() {
         let finalUrl = `${this.url}/users?page=${this.page}&per_page=${this.limit}`
+        console.log(finalUrl)
         try {
             const result = await this.axios.get(finalUrl)
             return {
@@ -28,26 +29,14 @@ export default class RandomUserApi {
     }
 
     /**
-     * função que pega os próximos registros
+     * função que faz a paginação dos resultados
      * @returns {object}
      */
 
-    async next() {
-        this.limit++
+    async pagination(page) {
+        this.page = page
         return await this.getAll()
     }
-
-    /**
-     * Função que retorna os elementos anteriores
-     * @returns {object}
-     */
-    async previous() {
-        if (this.limit - 1 >= 0) {
-            this.limit--
-            return await this.getAll()
-        }
-    }
-
     /**
      * Função que atualiza os dados do usuário
      * @param {*} data 
