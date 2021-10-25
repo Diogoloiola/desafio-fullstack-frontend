@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Modal as ModalBootstrap, Container, Row, Col, Form } from 'react-bootstrap';
-
 import { Button, Image } from './style'
+import ValidateForm from './../../utils/formValidate.js'
+
 
 export default function Modal({ data, setDataModal, randomUser }) {
     const user = data.item;
@@ -13,7 +14,6 @@ export default function Modal({ data, setDataModal, randomUser }) {
     const [birthDay, setBirthDay] = useState(user.dob.date)
     const [phone, setPhone] = useState(user.phone)
     const [nationality, setNationality] = useState(user.nat)
-    const [message, setMessage] = useState('')
 
     const updateUser = async (id) => {
         const payload = {
@@ -26,10 +26,19 @@ export default function Modal({ data, setDataModal, randomUser }) {
             "nationality": nationality,
             "street": street
         }
-        const result = await randomUser.updateUser(payload, id)
-        if (result) {
-            alert('Dados do usuário atualizados com sucesso')
+        const validateForm = new ValidateForm(payload)
+        const result = validateForm.validate()
+        if (result === true) {
+            const result = await randomUser.updateUser(payload, id)
+            if (result) {
+                alert('User data updated successfully')
+            }else{
+                alert('Something went wrong, please try again later')
+            }
+        } else {
+            alert(result)
         }
+
     }
 
     return (
@@ -68,7 +77,7 @@ export default function Modal({ data, setDataModal, randomUser }) {
                             <Form.Group className="mb-3">
                                 <Form.Label>Email</Form.Label>
                                 <Form.Control
-                                    type="text"
+                                    type="email"
                                     placeholder="email"
                                     value={email}
                                     onChange={e => setEmail(e.target.value)}
@@ -103,7 +112,7 @@ export default function Modal({ data, setDataModal, randomUser }) {
                             <Form.Group className="mb-3">
                                 <Form.Label>Birth day</Form.Label>
                                 <Form.Control
-                                    type="text"
+                                    type="date"
                                     placeholder="Birth day"
                                     value={birthDay}
                                     onChange={e => setBirthDay(e.target.value)}
