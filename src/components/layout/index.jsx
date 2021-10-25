@@ -18,16 +18,16 @@ import { Container as Main } from 'react-bootstrap';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import { URL_API } from './../../utils/utils.js'
+import { URL_API, TOKEN } from './../../utils/utils.js'
 
 export default function Layout() {
 
   const [users, setUsers] = useState([]);
   const [isVisible, setIsVisible] = useState(true)
+  const randomUser = new RandomUserApi(axios, URL_API, TOKEN)
 
   useEffect(() => {
     async function getData() {
-      const randomUser = new RandomUserApi(axios, URL_API)
       const result = await randomUser.getAll()
       setUsers(result['body'])
       setIsVisible(false)
@@ -45,7 +45,7 @@ export default function Layout() {
             <Main>
               <Message text={"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make"} />
               <Form />
-              <Table data={users} />
+              <Table data={users} randomUser={randomUser}/>
             </Main>
           </Container>
           {isVisible && <Overlay text={'Carregando'} />}

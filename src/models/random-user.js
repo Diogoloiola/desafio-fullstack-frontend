@@ -1,9 +1,10 @@
 export default class RandomUserApi {
-    constructor(axios, url) {
+    constructor(axios, url, token) {
         this.axios = axios
         this.page = 0
         this.limit = 50
         this.url = url
+        this.axios.defaults.headers.common['Authorization'] = token
     }
     /**
      * Função que busca todos os registros da api
@@ -44,6 +45,22 @@ export default class RandomUserApi {
         if (this.limit - 1 >= 0) {
             this.limit--
             return await this.getAll()
+        }
+    }
+
+    async updateUser(data, id) {
+        try {
+            const finalUrl = `${this.url}/users/${id}`
+            const result = await this.axios.patch(finalUrl, data)
+            return {
+                status: true, 
+                body: result.data
+            }
+        } catch (error) {
+            return {
+                status: false,
+                body: error
+            }
         }
     }
 }

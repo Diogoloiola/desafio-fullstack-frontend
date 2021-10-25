@@ -3,7 +3,7 @@ import Modal from './../Modal';
 import { useState } from 'react';
 import { Table as TableBootstrap } from 'react-bootstrap';
 
-export default function Table({ data }) {
+export default function Table({ data, randomUser }) {
     const [dataModal, setDataModal] = useState({ active: false, item: null });
     const [query, setQuery] = useState('-');
     function filterTable(e) {
@@ -36,14 +36,18 @@ export default function Table({ data }) {
                                 <td>{item.gender}</td>
                                 <td>{item.dob.date}</td>
                                 <td>
-                                    <Button teste={'ola'} onClick={() => setDataModal({ active: true, item: item })}>Details</Button>
+                                    <Button
+                                        onClick={
+                                            () => setDataModal({ active: true, item: item, randomUser: randomUser })}>
+                                        Details
+                                    </Button>
                                 </td>
                             </TableRow>)
                         })
                     }
                 </tbody>
             </TableBootstrap>
-            {dataModal.active && <Modal data={dataModal} setDataModal={setDataModal} />}
+            {dataModal.active && <Modal data={dataModal} setDataModal={setDataModal} randomUser={randomUser}/>}
         </Container>
     )
 }

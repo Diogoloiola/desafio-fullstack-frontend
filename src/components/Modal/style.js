@@ -34,7 +34,7 @@ export const Button = styled.div`
     padding: 10px 15px;
     border: none;
     outline: none;
-    background-color: #d9534f;
+    background-color: ${(props) => props.color ? '#007bff' : '#d9534f'};
     color: #fff;
     border-radius: 5px;
     cursor: pointer;

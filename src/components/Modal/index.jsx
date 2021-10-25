@@ -3,16 +3,34 @@ import { Modal as ModalBootstrap, Container, Row, Col, Form } from 'react-bootst
 
 import { Button, Image } from './style'
 
-export default function Modal({ data, setDataModal }) {
+export default function Modal({ data, setDataModal, randomUser }) {
     const user = data.item;
 
-    const [name, setName] = useState(`${user.name.title} ${user.name.first}`)
+    const [name, setName] = useState(`${user.name.first} ${user.name.last}`)
     const [gender, setGender] = useState(user.gender)
-    const [street, setStreet] = useState(user.location.street.name)
+    const [street, setStreet] = useState(user.location.street)
     const [email, setEmail] = useState(user.email)
     const [birthDay, setBirthDay] = useState(user.dob.date)
     const [phone, setPhone] = useState(user.phone)
     const [nationality, setNationality] = useState(user.nat)
+    const [message, setMessage] = useState('')
+
+    const updateUser = async (id) => {
+        const payload = {
+            "first_name": name.split(' ')[0],
+            "last_name": name.split(' ')[1],
+            "email": email,
+            "birth_date": birthDay,
+            "gender": gender,
+            "phone": phone,
+            "nationality": nationality,
+            "street": street
+        }
+        const result = await randomUser.updateUser(payload, id)
+        if (result) {
+            alert('Dados do usuário atualizados com sucesso')
+        }
+    }
 
     return (
         <ModalBootstrap show={data.active} size={"lg"}>
@@ -86,7 +104,7 @@ export default function Modal({ data, setDataModal }) {
                                 <Form.Label>Birth day</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    placeholder="email"
+                                    placeholder="Birth day"
                                     value={birthDay}
                                     onChange={e => setBirthDay(e.target.value)}
                                 />
@@ -120,7 +138,13 @@ export default function Modal({ data, setDataModal }) {
                 </Container>
             </ModalBootstrap.Body>
             <ModalBootstrap.Footer>
-                <Button onClick={() => setDataModal({ active: false, item: null })}>Close</Button>
+                <Button onClick={
+                    () => setDataModal({ active: false, item: null, randomUser: randomUser })
+                }
+                >Close</Button>
+                <Button color={'#007bff'} onClick={() => {
+                    updateUser(user.login.uuid)
+                }}>Update user</Button>
             </ModalBootstrap.Footer>
         </ModalBootstrap>
     )
