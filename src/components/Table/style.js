@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
 export const Container = styled.section`
+  width: 100%;
+  height: 300px;
   margin-top: 30px;
+  overflow-y: auto;
+  margin-bottom: 30px;
 `;
 export const Button = styled.button`
   display: block;
