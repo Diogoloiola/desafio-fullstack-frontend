@@ -36,7 +36,7 @@ export default function Table({ data, randomUser, setUsers }) {
                             </select>
                         </th>
                         <th>Birth</th>
-                        <th>Actions</th>
+                        <th style={{width: '300px'}}>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,7 +46,7 @@ export default function Table({ data, randomUser, setUsers }) {
                                 <td>{item.name.first}</td>
                                 <td>{item.gender}</td>
                                 <td>{item.dob.date}</td>
-                                <td>
+                                <td style={{display: 'flex', width: '300px', justifyContent: 'flex-start'}}>
                                     <Button color={'primary'}
                                         onClick={
                                             () => setDataModal({ active: true, item: item, randomUser: randomUser })}>
