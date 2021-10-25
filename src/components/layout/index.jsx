@@ -1,10 +1,12 @@
 import { Container } from './style'
+
 import Header from './../Header';
 import DetailsUser from './../DetailsUser';
 import Message from './../Message';
 import Form from './../Form';
 import Table from './../Table';
 import UserDetails from './../UserDetails';
+import Overlay from './../Overlay'
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -17,12 +19,14 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 export default function Layout() {
 
-  let [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [isVisible, setIsVisible] = useState(true)
 
   useEffect(() => {
     async function getData() {
       const result = await axios.get("https://randomuser.me/api/?results=50&seed=foobar");
       setUsers(result.data["results"]);
+      setIsVisible(false)
     }
     getData();
   }, []);
@@ -40,6 +44,7 @@ export default function Layout() {
               <Table data={users} />
             </Main>
           </Container>
+          {isVisible && <Overlay text={'Carregando'}/> }
         </>
       )} />
 
