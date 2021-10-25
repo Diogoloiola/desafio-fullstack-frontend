@@ -29,18 +29,24 @@ export default function Layout() {
   useEffect(() => {
     async function getData() {
       const result = await randomUser.getAll()
-      setUsers(result['body'])
+      if (Array.isArray(result['body'])) {
+        setUsers(result['body'])
+      } else {
+        setUsers([])
+      }
       setIsVisible(false)
     }
     getData();
   }, []);
 
- 
+
   const pagination = async (page) => {
-    setIsVisible(true)
-    const result = await randomUser.pagination(page - 1)
-    setUsers(result['body'])
-    setIsVisible(false)
+    if (users.length) {
+      setIsVisible(true)
+      const result = await randomUser.pagination(page - 1)
+      setUsers(result['body'])
+      setIsVisible(false)
+    }
   }
 
 
