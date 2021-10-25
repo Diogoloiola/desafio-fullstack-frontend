@@ -4,7 +4,7 @@ export const Container = styled.section`
     width: 100%;
     display: flex;
     margin: auto;
-    margin-top: 35px;
+    margin-top: 10px;
 `
 
 export const Input = styled.input`
