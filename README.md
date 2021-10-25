@@ -18,13 +18,12 @@ Devemos exibir os seguintes campos do paciente:
 - Nacionalidade
 - Endereço
 - ID (Número de identificação)
-- URL para compartilhamento
 
 ## Tecnologias utilizadas
-    - React JS
-    - Styled componens
-    - Axios
-    - Bootstrap
+- React JS
+- Styled componens
+- Axios
+- Bootstrap
 
 ## Instalando / Iniciando
 
@@ -54,7 +53,7 @@ No seu terminal as seguintes informações.
 
 Escolha a seguinte opção para ver a aplicação em execução
 
-    On Your Network: http://172.21.0.2:3000
+    On Your Network: http://172.21.0.2:4000
 
 
 ## Rodando o projeto sem o docker
@@ -64,11 +63,11 @@ Escolha a seguinte opção para ver a aplicação em execução
 
 Tente acessar o link abaixo.
 
-    http://localhost:3000
+    http://localhost:4000
 
 ## Imagem do projeto
 
-<img src="images/aplicação.png" />
+<img src="images/preview.png" />
 
 ## Créditos
 
