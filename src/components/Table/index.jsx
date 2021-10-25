@@ -3,12 +3,23 @@ import Modal from './../Modal';
 import { useState } from 'react';
 import { Table as TableBootstrap } from 'react-bootstrap';
 
-export default function Table({ data, randomUser }) {
+export default function Table({ data, randomUser, setUsers }) {
     const [dataModal, setDataModal] = useState({ active: false, item: null });
     const [query, setQuery] = useState('-');
     function filterTable(e) {
         const { value } = e.target
         setQuery(value);
+    }
+
+    const deleteUser = async (id) => {
+        const result = await randomUser.deleteUser(id)
+        if (result.status) {
+            alert(result.body)
+            const data = await randomUser.getAll()
+            setUsers(data['body'])
+        } else {
+            alert(result.body)
+        }
     }
 
     return (
@@ -41,18 +52,18 @@ export default function Table({ data, randomUser }) {
                                             () => setDataModal({ active: true, item: item, randomUser: randomUser })}>
                                         Details
                                     </Button>
-                                    {/* <Button
+                                    <Button
                                         onClick={
-                                            () => randomUser.delete(item.login.uuid)}>
+                                            () => deleteUser(item.login.uuid)}>
                                         Delete User
-                                    </Button> */}
+                                    </Button>
                                 </td>
                             </TableRow>)
                         })
                     }
                 </tbody>
             </TableBootstrap>
-            {dataModal.active && <Modal data={dataModal} setDataModal={setDataModal} randomUser={randomUser}/>}
+            {dataModal.active && <Modal data={dataModal} setDataModal={setDataModal} randomUser={randomUser} />}
         </Container>
     )
 }
