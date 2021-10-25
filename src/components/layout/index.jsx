@@ -7,6 +7,7 @@ import Form from './../Form';
 import Table from './../Table';
 import UserDetails from './../UserDetails';
 import Overlay from './../Overlay'
+import RandomUserApi from './../../models/random-user.js'
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -17,6 +18,8 @@ import { Container as Main } from 'react-bootstrap';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
+import { URL_API } from './../../utils/utils.js'
+
 export default function Layout() {
 
   const [users, setUsers] = useState([]);
@@ -24,8 +27,9 @@ export default function Layout() {
 
   useEffect(() => {
     async function getData() {
-      const result = await axios.get("https://randomuser.me/api/?results=50&seed=foobar");
-      setUsers(result.data["results"]);
+      const randomUser = new RandomUserApi(axios, URL_API)
+      const result = await randomUser.getAll()
+      setUsers(result['body'])
       setIsVisible(false)
     }
     getData();
@@ -44,11 +48,11 @@ export default function Layout() {
               <Table data={users} />
             </Main>
           </Container>
-          {isVisible && <Overlay text={'Carregando'}/> }
+          {isVisible && <Overlay text={'Carregando'} />}
         </>
       )} />
 
-      <Route path="/:uuid" exact component={() => <UserDetails data={users}/>  } />
+      <Route path="/:uuid" exact component={() => <UserDetails data={users} />} />
     </Router>
   )
 }

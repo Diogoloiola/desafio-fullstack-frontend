@@ -1,6 +1,5 @@
 import { Container, Button, TableRow } from './style';
 import Modal from './../Modal';
-import { formatDate } from './../../utils/utils.js';
 import { useState } from 'react';
 import { Table as TableBootstrap } from 'react-bootstrap';
 
@@ -35,7 +34,7 @@ export default function Table({ data }) {
                             return (<TableRow key={index} gender={item.gender} filter={query}>
                                 <td>{item.name.first}</td>
                                 <td>{item.gender}</td>
-                                <td>{formatDate(item.dob.date)}</td>
+                                <td>{item.dob.date}</td>
                                 <td>
                                     <Button teste={'ola'} onClick={() => setDataModal({ active: true, item: item })}>Details</Button>
                                 </td>
