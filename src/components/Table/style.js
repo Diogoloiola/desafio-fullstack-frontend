@@ -13,6 +13,7 @@ export const Button = styled.button`
   border-radius: 5px;
   margin: auto;
   cursor: pointer;
+  background-color: ${(props) => props.color ? '#007bff' : '#d9534f'};
 `;
 
 export const TableRow = styled.tr`

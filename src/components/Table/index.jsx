@@ -36,11 +36,16 @@ export default function Table({ data, randomUser }) {
                                 <td>{item.gender}</td>
                                 <td>{item.dob.date}</td>
                                 <td>
-                                    <Button
+                                    <Button color={'primary'}
                                         onClick={
                                             () => setDataModal({ active: true, item: item, randomUser: randomUser })}>
                                         Details
                                     </Button>
+                                    {/* <Button
+                                        onClick={
+                                            () => randomUser.delete(item.login.uuid)}>
+                                        Delete User
+                                    </Button> */}
                                 </td>
                             </TableRow>)
                         })
